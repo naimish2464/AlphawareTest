@@ -147,34 +147,9 @@ const HumorQuotesPage = () => {
     }
   };
 
-  const handleWhatsAppShare = (quote, author) => {
-    const message = encodeURIComponent(`"${quote}" - ${author}`);
-    window.open(`https://wa.me/?text=${message}`, '_blank');
-  };
 
-  const handleInstagramShare = async (quote, author) => {
-    const message = encodeURIComponent(`"${quote}" - ${author}`);
 
-    try {
-      const response = await fetch(
-        'https://graph.facebook.com/v18.0/instagram_oembed?url=https://www.instagram.com/&access_token=YOUR_INSTAGRAM_GRAPH_API_TOKEN'
-      );
-      const data = await response.json();
-
-      if (data && data.html) {
-        const instagramLink = `https://www.instagram.com/?text=${message}`;
-        window.open(instagramLink, '_blank');
-      } else {
-        const instagramLink = `https://www.instagram.com/?text=${message}`;
-        window.open(instagramLink, '_blank');
-      }
-    } catch (error) {
-      console.error('Error sharing to instagram:', error);
-      const instagramLink = `https://www.instagram.com/?text=${message}`;
-      window.open(instagramLink, '_blank');
-    }
-  };
-
+  
 
 
   return (
@@ -184,7 +159,7 @@ const HumorQuotesPage = () => {
       <ToastContainer />
       
       <main className="relative z-10">
-        <div className="container mx-auto px-4 py-12">
+        <div className="container mx-auto px-4 py-12 mt-32">
           <h1 className="text-4xl md:text-5xl font-bold text-center mb-12 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 transition-all duration-500">
             Humor Quotes
           </h1>
